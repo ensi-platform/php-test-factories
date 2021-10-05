@@ -1,6 +1,6 @@
 <?php
 
-namespace Greensight\TestFactories\Tests\Stubs;
+namespace Ensi\TestFactories\Tests\Stubs;
 
 class TestObjectDTO
 {

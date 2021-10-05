@@ -1,8 +1,8 @@
 <?php
 
-use Greensight\TestFactories\Tests\Stubs\TestArrayFactory;
-use Greensight\TestFactories\Tests\Stubs\TestObjectDTO;
-use Greensight\TestFactories\Tests\Stubs\TestObjectFactory;
+use Ensi\TestFactories\Tests\Stubs\TestArrayFactory;
+use Ensi\TestFactories\Tests\Stubs\TestObjectDTO;
+use Ensi\TestFactories\Tests\Stubs\TestObjectFactory;
 use Illuminate\Support\Collection;
 
 test('testObjectFactory can create object', function () {

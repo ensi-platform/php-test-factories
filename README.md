@@ -6,7 +6,7 @@ Define factories to generate any kind of object or even arrays for unit tests.
 
 You can install the package via composer:
 
-`composer require greensight/test-factories`
+`composer require ensi/test-factories`
 
 ## Basic usage
 
@@ -14,7 +14,7 @@ Let's create a factory and extend abstract Factory.
 All you need is to define `definition` and `make` methods.
 
 ```php
-use Greensight\TestFactories\Factory;
+use Ensi\TestFactories\Factory;
 
 class CustomerFactory extends Factory
 {

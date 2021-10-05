@@ -1,5 +1,5 @@
 {
-    "name": "greensight/test-factories",
+    "name": "ensi/test-factories",
     "description": "",
     "keywords": [
         "laravel",
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Greensight\\TestFactories\\": "src"
+            "Ensi\\TestFactories\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Greensight\\TestFactories\\Tests\\": "tests"
+            "Ensi\\TestFactories\\Tests\\": "tests"
         }
     },
     "scripts": {

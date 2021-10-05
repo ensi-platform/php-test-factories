@@ -1,8 +1,8 @@
 <?php
 
-namespace Greensight\TestFactories\Tests\Stubs;
+namespace Ensi\TestFactories\Tests\Stubs;
 
-use Greensight\TestFactories\Factory;
+use Ensi\TestFactories\Factory;
 
 class TestObjectFactory extends Factory
 {

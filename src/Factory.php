@@ -1,6 +1,6 @@
 <?php
 
-namespace Greensight\TestFactories;
+namespace Ensi\TestFactories;
 
 use Faker\Factory as FakerFactory;
 use Faker\Generator;
