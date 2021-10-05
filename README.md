@@ -93,9 +93,7 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 1. composer install
 2. npm i
-3. Start Elasticsearch in your preferred way.
-4. Copy `phpunit.xml.dist` to `phpunit.xml` and set correct env variables there
-6. composer test
+3. composer test
 
 ## Security Vulnerabilities
 
