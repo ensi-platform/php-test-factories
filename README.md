@@ -6,7 +6,7 @@ Define factories to generate any kind of object or even arrays for unit tests.
 
 You can install the package via composer:
 
-`composer require ensi/test-factories`
+`composer require ensi/test-factories --dev`
 
 ## Basic usage
 
