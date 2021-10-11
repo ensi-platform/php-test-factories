@@ -88,11 +88,13 @@ abstract class Factory
 
     protected function whenNotNull($condition, $value, $default = null): mixed
     {
+        $default = func_num_args() === 3 ? $default : new FactoryMissingValue;
         return $this->when($condition !== null, $value, $default);
     }
 
     protected function executed($condition, $value, $default = null): mixed
     {
+        $default = func_num_args() === 3 ? $default : new FactoryMissingValue;
         return $this->when($condition !== null, $value, $default);
     }
 
