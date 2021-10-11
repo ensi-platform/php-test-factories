@@ -39,3 +39,9 @@ test('makeSeveral works', function () {
     expect($result)->toHaveCount($count);
     $result->each(fn ($x) => expect($x->fields['id'])->toEqual($id));
 });
+
+test('whenNotNull excludes null field', function () {
+    $result = TestArrayFactory::new()->make();
+
+    expect($result)->not->toHaveKey('id');
+});
