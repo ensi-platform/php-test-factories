@@ -9,10 +9,14 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
+/**
+ * @property Generator|FakerProvider $faker
+ */
 abstract class Factory
 {
     protected array $only = [];
     protected array $except = [];
+    protected array $states = [];
 
     abstract protected function definition(): array;
 
@@ -20,6 +24,7 @@ abstract class Factory
 
     public function __construct(protected Generator $faker)
     {
+        $this->faker->addProvider(new FakerProvider($this->faker));
     }
 
     public static function new(): static
@@ -48,6 +53,11 @@ abstract class Factory
         return $this->immutableSet('except', $fields);
     }
 
+    public function state(array $state): self
+    {
+        return $this->immutableSet('states', array_merge($this->states, $state));
+    }
+
     protected function prepareDefinition(): array
     {
         return $this->removeMissingValues(
@@ -66,6 +76,8 @@ abstract class Factory
 
     protected function mergeDefinitionWithExtra(array $extra): array
     {
+        $extra = array_merge($this->states, $extra);
+
         return array_merge($this->prepareDefinition(), $extra);
     }
 
