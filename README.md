@@ -102,8 +102,7 @@ $customerDataObjects = CustomerFactory::new()->makeSeveral(3); // returns Illumi
 $this->faker->randomList(fn() => $this->faker->numerify(), 0, 10) // => ['123', ..., '456']
 $this->faker->nullable() // equivalent for $this->faker->optional(), but work with boolean parameter or global static setting
 $this->faker->exactly($value) // return $value. Example: $this->faker->nullable()->exactly(AnotherFactory::new()->make())
-$this->faker->carbon() // return Carbon
-$this->faker->carbonImmutable() // return CarbonImmutable
+$this->faker->carbon() // return CarbonInterface
 $this->faker->dateMore()
 $this->faker->modelId() // return unsigned bit integer value
 ```

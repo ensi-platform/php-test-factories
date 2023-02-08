@@ -4,8 +4,10 @@ namespace Ensi\TestFactories;
 
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 use DateTime;
 use Faker\Provider\Base;
+use Illuminate\Support\Facades\Date;
 
 class FakerProvider extends Base
 {
@@ -71,25 +73,14 @@ class FakerProvider extends Base
     }
 
     /**
-     * Сгенерировать дату Carbon
+     * Сгенерировать дату
      * @param DateTime|int|string $max
      * @param string|null $timezone
-     * @return Carbon
+     * @return CarbonInterface
      */
-    public function carbon(DateTime|int|string $max = 'now', ?string $timezone = null): Carbon
+    public function carbon(DateTime|int|string $max = 'now', ?string $timezone = null): CarbonInterface
     {
-        return new Carbon($this->generator->dateTime($max, $timezone));
-    }
-
-    /**
-     * Сгенерировать дату CarbonImmutable
-     * @param DateTime|int|string $max
-     * @param string|null $timezone
-     * @return CarbonImmutable
-     */
-    public function carbonImmutable(DateTime|int|string $max = 'now', ?string $timezone = null): CarbonImmutable
-    {
-        return new CarbonImmutable($this->generator->dateTime($max, $timezone));
+        return Date::make($this->generator->dateTime($max, $timezone));
     }
 
     /**
