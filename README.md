@@ -27,6 +27,8 @@ class CustomerFactory extends Factory
         return [
             'id' => $this->whenNotNull($this->id, $this->id),
             'user_id' => $this->faker->randomNumber(),
+            'is_active' => $this->faker->boolean(),
+            'date_start' => $this->faker->dateTime(),
             'avatar' => $this->avatarFactory?->make(),
             'addresses' => $this->executeNested($this->addressFactories, new FactoryMissingValue()),
         ];
@@ -53,11 +55,20 @@ class CustomerFactory extends Factory
     {
         return $this->immutableSet('addressFactories', $factories ?? [CustomerAddressFactory::new()]);
     }
+
+    public function active(): self
+    {
+        return $this->state([
+            'is_active' => true,
+            'date_start' => $this->faker->dateTimeBetween('-30 years', 'now'),
+        ]);
+    }
 }
 
 // Now we can use Factory like that
 $customerData1 = CustomerFactory::new()->make();
-$customerData2 = CustomerFactory::new()->withId()->withAvatar(FileFactory::new()->someCustomMethod())->make();
+$customerData2 = CustomerFactory::new()->active()->make();
+$customerData3 = CustomerFactory::new()->withId()->withAvatar(FileFactory::new()->someCustomMethod())->make();
 ```
 
 As you can see the package uses `fakerphp/faker` to generate test data.
@@ -83,6 +94,17 @@ It's recommended to use `$this->immutableSet` in state change methods to make su
 
 ```php
 $customerDataObjects = CustomerFactory::new()->makeSeveral(3); // returns Illuminate\Support\Collection with 3 elements
+```
+
+## Additional Faker methods
+
+```php
+$this->faker->randomList(fn() => $this->faker->numerify(), 0, 10) // => ['123', ..., '456']
+$this->faker->nullable() // equivalent for $this->faker->optional(), but work with boolean parameter or global static setting
+$this->faker->exactly($value) // return $value. Example: $this->faker->nullable()->exactly(AnotherFactory::new()->make())
+$this->faker->carbon() // return CarbonInterface
+$this->faker->dateMore()
+$this->faker->modelId() // return unsigned bit integer value
 ```
 
 ## Contributing
