@@ -20,9 +20,4 @@ class TestArrayFactory extends Factory
     {
         return $this->makeArray($extra);
     }
-
-    public function withId(?int $id = null): self
-    {
-        return $this->immutableSet('id', $id ?? $this->faker->randomNumber());
-    }
 }
