@@ -20,9 +20,4 @@ class TestObjectFactory extends Factory
     {
         return new TestObjectDTO($this->mergeDefinitionWithExtra($extra));
     }
-
-    public function withId(?int $id = null): self
-    {
-        return $this->immutableSet('id', $id ?? $this->faker->randomNumber());
-    }
 }
