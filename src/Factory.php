@@ -53,7 +53,7 @@ abstract class Factory
         return $this->immutableSet('except', $fields);
     }
 
-    public function state(array $state): self
+    public function state(array $state): static
     {
         return $this->immutableSet('states', array_merge($this->states, $state));
     }
