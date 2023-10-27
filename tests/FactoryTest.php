@@ -31,6 +31,18 @@ test('makeSeveral works', function () {
     $result->each(fn ($x) => expect($x->fields['id'])->toEqual($id));
 });
 
+test('makeSeveralExtras works', function () {
+    $extras = [['id' => 10], ['id' => 11, 'user_id' => 20]];
+    $result = TestObjectFactory::new()->makeSeveralExtras(...$extras);
+
+    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toHaveCount(count($extras));
+    $result->each(function ($obj) use ($extras) {
+        static $i = 0;
+        expect($obj->fields)->toMatchArray($extras[$i++]);
+    });
+});
+
 test('whenNotNull excludes null field', function () {
     $result = TestArrayFactory::new()->make();
 

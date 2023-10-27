@@ -43,6 +43,11 @@ abstract class Factory
             ->map(fn () => $this->make($extra));
     }
 
+    public function makeSeveralExtras(array ...$extras): Collection
+    {
+        return collect($extras)->map($this->make(...));
+    }
+
     public function only(array $fields): static
     {
         return $this->immutableSet('only', $fields);
