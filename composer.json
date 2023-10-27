@@ -20,6 +20,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.2",
+        "orchestra/testbench": "^8.14",
         "pestphp/pest": "^1.16 || ^2.0",
         "php-parallel-lint/php-var-dump-check": "^0.5.0",
         "phpunit/phpunit": "^9.0 || ^10.0"
